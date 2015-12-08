@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.registryagency.bg/schemas/envelopev2">
+	<Header>
+		<MessageDetails>
+			<CreateDate>2011-04-05T23:01:45.8148773+02:00</CreateDate>
+			<Creator>registryAgency</Creator>
+			<ID>ID</ID>
+			<Reason>Notification</Reason>
+		</MessageDetails>
+		<SenderDetails>
+			<Name>Export</Name>
+			<Uri>ExportUri</Uri>
+		</SenderDetails>
+		<TargetDetails>
+			<Name>targetName</Name>
+			<Uri>TargetUri</Uri>
+		</TargetDetails>
+		<Status>OK</Status>
+	</Header>
+	<Body>
+		<Deeds>
+			<Deed DeedStatus="E" CompanyName="Тест" GUID="Тест" UIC="12345" LegalForm="EOOD" xmlns="http://www.registryagency.bg/schemas/deedv2">
+				<IncomingPackageInfo IncomingNumber="111111" IncomingGUID="Тест" PackageType="New" LeadingApp="G2">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Изрично писмено пълномощно" ApplicationType="G2" />
+					</Documents>
+				</IncomingPackageInfo>
+				<IncomingPackageInfo IncomingNumber="2222" IncomingGUID="Тест" PackageType="New" LeadingApp="G2">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец Г2" ApplicationType="G2" />
+					</Documents>
+				</IncomingPackageInfo>
+				<SubDeed SubUIC="12345" SubUICType="G1_ActAnnouncement">
+					<StatementsB FieldOperation="Add" FieldIdent="10019B" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:17" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<StatementB RecordIncomingNumber="20140626133046" RecordID="1" GroupID="1" ActModeText="Годишен финансов отчет" ActModeValue="2" Description="Годишен финансов отчет" ActDate="" ActYear="2013" ActID="9a597091a70e49d2ae4c50c6a5ca0864" ActWithErasedPersonalData="0" />
+						<StatementB RecordIncomingNumber="20120829155336" RecordID="1" GroupID="1" ActModeText="Годишен финансов отчет" ActModeValue="2" Description="Годишен финансов отчет" ActDate="" ActYear="2011" ActID="080cbf5478bc4237bd2e79d785f30ab4" ActWithErasedPersonalData="0" />
+						<StatementB RecordIncomingNumber="1" RecordID="1" GroupID="1" ActModeText="Годишен финансов отчет" ActModeValue="2" Description="Годишен финансов отчет" ActDate="" ActYear="2013" ActID="f647c2966a8f48068ded747cbb5f4816" ActWithErasedPersonalData="0" />
+						<StatementB RecordIncomingNumber="1" RecordID="1" GroupID="1" ActModeText="Годишен финансов отчет" ActModeValue="2" Description="Годишен финансов отчет" ActDate="" ActYear="2013" ActID="5a1a4453af6042568df1dd5f09c7a398" ActWithErasedPersonalData="0" />
+						<StatementB RecordIncomingNumber="1" RecordID="1" GroupID="1" ActModeText="Годишен финансов отчет" ActModeValue="2" Description="Годишен финансов отчет" ActDate="" ActYear="2013" ActID="fcd138f021a44011b9d3e2fb23f3eca0" ActWithErasedPersonalData="0" />
+					</StatementsB>
+				</SubDeed>
+			</Deed>
+			<Deed DeedStatus="L" CompanyNAme="Тест" GUID="Тест" UIC="12345" LegalForm="ET" xmlns="http://www.registryagency.bg/schemas/deedv2">
+				<IncomingPackageInfo IncomingNumber="20141222150832" IncomingGUID="Тест" PackageType="Transformation" LeadingApp="V1">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец А1" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец А1" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец В1" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документ за внесена държавна такса" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на търговското предприятие с нотариална заверка на подписите" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Удостоверение за уведомяване на териториалната дирекция на НАП по чл. 77, ал. 1 от ДОПК" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Друг:ДЕКЛАРАЦИЯ" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Образец от саморъчния подпис на търговеца" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация от едноличния търговец, че отговаря на изискванията на чл. 57 и чл. 58, ал. 2 и 4 ТЗ" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Удостоверение за уведомяване на териториалната дирекция на НАП по чл. 77, ал. 1 от ДОПК" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="V1" />
+					</Documents>
+				</IncomingPackageInfo>
+				<SubDeed SubUIC="12345" SubUICType="MainCircumstances">
+					<AddemptionOfTrader FieldOperation="Add" FieldIdent="00270" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">1</AddemptionOfTrader>
+				</SubDeed>
+				<SubDeed SubUIC="12345" SubUICType="V1_Transfer">
+					<TransferringTypeOfTradeEnterprise FieldOperation="Add" FieldIdent="06000" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" FullTransfer="1" PartialTransfer="0" TakeTransfer="0" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields" />
+					<TransferringEnterprise FieldOperation="Add" FieldIdent="06010" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+							<Indent>1234556</Indent>
+							<Name>ТЕСТ ТЕСТ</Name>
+							<IndentType>UIC</IndentType>
+							<CountryID xsi:nil="true" />
+							<CountryName />
+						</Subject>
+					</TransferringEnterprise>
+					<AcquisitionEnterprises FieldOperation="Add" FieldIdent="06020" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<AcquisitionEnterprise RecordIncomingNumber="1" RecordID="1" GroupID="1">
+							<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>1234556</Indent>
+								<Name>ТЕСТ ТЕСТ</Name>
+								<IndentType>UIC</IndentType>
+								<CountryID xsi:nil="true" />
+								<CountryName />
+							</Subject>
+						</AcquisitionEnterprise>
+					</AcquisitionEnterprises>
+				</SubDeed>
+			</Deed>
+			<Deed DeedStatus="N" CompanyNAme="Тест" GUID="Тест" UIC="12345" LegalForm="ET" xmlns="http://www.registryagency.bg/schemas/deedv2">
+				<IncomingPackageInfo IncomingNumber="20141222150832" IncomingGUID="Тест" PackageType="Transformation" LeadingApp="V1">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец А1" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец А1" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец В1" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документ за внесена държавна такса" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на търговското предприятие с нотариална заверка на подписите" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Удостоверение за уведомяване на териториалната дирекция на НАП по чл. 77, ал. 1 от ДОПК" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Друг:ДЕКЛАРАЦИЯ" ApplicationType="V1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Образец от саморъчния подпис на търговеца" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация от едноличния търговец, че отговаря на изискванията на чл. 57 и чл. 58, ал. 2 и 4 ТЗ" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Удостоверение за уведомяване на териториалната дирекция на НАП по чл. 77, ал. 1 от ДОПК" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A1" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="V1" />
+					</Documents>
+				</IncomingPackageInfo>
+				<SubDeed SubUIC="12345" SubUICType="MainCircumstances">
+					<UIC FieldOperation="Add" FieldIdent="00010" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" UIC="12345" IsNew="true" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<CompanyControl />
+						<BulstatDeed>
+							<Deed />
+							<Year />
+							<CourtCode />
+						</BulstatDeed>
+					</UIC>
+					<Company FieldOperation="Add" FieldIdent="00020" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">ТЕСТ</Company>
+					<LegalForm FieldOperation="Add" FieldIdent="00030" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" Text="Едноличен търговец" Code="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields" />
+					<Seat FieldOperation="Add" FieldIdent="00050" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Address>
+							<CountryID>1</CountryID>
+							<CountryCode>BGR</CountryCode>
+							<Country>БЪЛГАРИЯ</Country>
+							<IsForeign>false</IsForeign>
+							<DistrictID>43</DistrictID>
+							<DistrictEkatte>PER</DistrictEkatte>
+							<District>Перник</District>
+							<Municipalityid>168</Municipalityid>
+							<MunicipalityEkatte>PER32</MunicipalityEkatte>
+							<Municipality>Перник</Municipality>
+							<SettlementID>4543</SettlementID>
+							<SettlementEKATTE>55871</SettlementEKATTE>
+							<Settlement>гр. Перник</Settlement>
+							<AreaID xsi:nil="true" />
+							<Area />
+							<AreaEkatte />
+							<PostCode>1111</PostCode>
+							<ForeignPlace />
+							<HousingEstate />
+							<Street>УЛИЦА</Street>
+							<StreetNumber />
+							<Block>1</Block>
+							<Entrance>Б</Entrance>
+							<Floor>2</Floor>
+							<Apartment>2</Apartment>
+						</Address>
+						<Contacts>
+							<Phone />
+							<Fax />
+							<EMail />
+							<URL />
+						</Contacts>
+					</Seat>
+					<SubjectOfActivity FieldOperation="Add" FieldIdent="00060" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" IsBank="false" IsBankText="" IsInsurer="false" IsInsurerText="" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">ВНОС НА ВСИЧКИ ВИДОВЕ СТОКИ</SubjectOfActivity>
+					<SubjectOfActivityNKID FieldOperation="Add" FieldIdent="00061" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" codeNkid="5540" textNkid="КАФЕ-АПЕРИТИВ, ОБЩЕСТВЕНО ХРАНЕНЕ" idNkid="" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields" />
+					<PhysicalPersonTrader FieldOperation="Add" FieldIdent="00180" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Person CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+							<Indent>2222222222</Indent>
+							<Name>ТЕСТ ТЕСТ ИВАНОВ</Name>
+							<IndentType>EGN</IndentType>
+							<CountryID>1</CountryID>
+							<CountryName>БЪЛГАРИЯ</CountryName>
+						</Person>
+					</PhysicalPersonTrader>
+				</SubDeed>
+				<SubDeed SubUIC="12345" SubUICType="V1_Transfer">
+					<TransferringTypeOfTradeEnterprise FieldOperation="Add" FieldIdent="06000" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" FullTransfer="1" PartialTransfer="0" TakeTransfer="0" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields" />
+					<TransferringEnterprise FieldOperation="Add" FieldIdent="06010" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+							<Indent>1234556</Indent>
+							<Name>ТЕСТ ТЕСТ</Name>
+							<IndentType>UIC</IndentType>
+							<CountryID xsi:nil="true" />
+							<CountryName />
+						</Subject>
+					</TransferringEnterprise>
+					<AcquisitionEnterprises FieldOperation="Add" FieldIdent="06020" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:21" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<AcquisitionEnterprise RecordIncomingNumber="1" RecordID="1" GroupID="1">
+							<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>1234556</Indent>
+								<Name>ТЕСТ ТЕСТ</Name>
+								<IndentType>UIC</IndentType>
+								<CountryID xsi:nil="true" />
+								<CountryName />
+							</Subject>
+						</AcquisitionEnterprise>
+					</AcquisitionEnterprises>
+				</SubDeed>
+			</Deed>
+			<Deed DeedStatus="N" CompanyNAme="Тест" GUID="Тест" UIC="12345" LegalForm="OOD" xmlns="http://www.registryagency.bg/schemas/deedv2">
+				<IncomingPackageInfo IncomingNumber="20141220124134" IncomingGUID="Тест" PackageType="ForChange" LeadingApp="A4">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Протокол от редовно/извънредно общо събрание" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Писмено предизвестие за напускане на съдружник" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Писмено предизвестие за напускане на съдружник" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документи в изпълнение на указанията" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документи в изпълнение на указанията" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документи в изпълнение на указанията" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Изрично писмено пълномощно" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Друг:" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Изрично писмено пълномощно" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Указания за отстраняване на нередовности" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Актуален дружествен договор/учредителен акт/устав" ApplicationType="A4" />
+					</Documents>
+				</IncomingPackageInfo>
+				<IncomingPackageInfo IncomingNumber="20120915003021" IncomingGUID="Тест" PackageType="ForChange" LeadingApp="A4">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация по чл. 142" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Протокол от редовно/извънредно общо събрание" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документ за внесена държавна такса" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Нотариално заверено съгласие и образец от саморъчния подпис на управител" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Решение на едноличния собственик на капитала" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Друг: ДЕКЛАРАЦИЯ УПРАВИТЕЛ" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Молба за приемане на нов съдружник" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на дружествен дял с нотариална заверка на подписите" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на дружествен дял с нотариална заверка на подписите" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на дружествен дял с нотариална заверка на подписите" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на дружествен дял с нотариална заверка на подписите" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Изрично писмено пълномощно" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Актуален дружествен договор/учредителен акт/устав" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Актуален дружествен договор/учредителен акт/устав" ApplicationType="A4" />
+					</Documents>
+				</IncomingPackageInfo>
+				<SubDeed SubUIC="12345" SubUICType="MainCircumstances">
+					<Partners FieldOperation="Add" FieldIdent="00190" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:44" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Partner RecordIncomingNumber="1" RecordID="1" GroupID="1" share="50">
+							<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>3333333333</Indent>
+								<Name>ТЕСТ ПЕТРОВА ТЕСТ</Name>
+								<IndentType>EGN</IndentType>
+								<CountryID>1</CountryID>
+								<CountryName>БЪЛГАРИЯ</CountryName>
+							</Subject>
+						</Partner>
+						<Partner RecordIncomingNumber="1" RecordID="1" GroupID="1" share="900">
+							<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>4444444444</Indent>
+								<Name>Мария ТЕСТ ТЕСТ</Name>
+								<IndentType>EGN</IndentType>
+								<CountryID>1</CountryID>
+								<CountryName>БЪЛГАРИЯ</CountryName>
+							</Subject>
+						</Partner>
+						<Partner RecordIncomingNumber="1" RecordID="1" GroupID="1" share="50">
+							<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>5555555555</Indent>
+								<Name>ТЕСТ ДИМИТРОВА ТЕСТ</Name>
+								<IndentType>EGN</IndentType>
+								<CountryID>1</CountryID>
+								<CountryName>БЪЛГАРИЯ</CountryName>
+							</Subject>
+						</Partner>
+					</Partners>
+				</SubDeed>
+				<SubDeed SubUIC="12345" SubUICType="G1_ActAnnouncement">
+					<StatementsAJ FieldOperation="Add" FieldIdent="1001AJ" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:44" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<StatementAJ RecordIncomingNumber="1" RecordID="1" GroupID="1" ActModeText="Актуален дружествен договор/учредителен акт/устав" ActModeValue="36" Description="" ActDate="" ActYear="" ActID="1" ActWithErasedPersonalData="0" />
+					</StatementsAJ>
+				</SubDeed>
+			</Deed>
+			<Deed DeedStatus="N" CompanyNAme="Тест" GUID="Тест" UIC="12345" LegalForm="EOOD" xmlns="http://www.registryagency.bg/schemas/deedv2">
+				<IncomingPackageInfo IncomingNumber="20141218213904" IncomingGUID="Тест" PackageType="ForChange" LeadingApp="A4">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация по чл. 142" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документ за внесена държавна такса" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Нотариално заверено съгласие и образец от саморъчния подпис на управител" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Решение на едноличния собственик на капитала" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Решение на едноличния собственик на капитала" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация по чл.141, ал.8 ТЗ" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Молба за напускане на съдружник" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Молба " ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на дружествен дял с нотариална заверка на подписите" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Изрично писмено пълномощно" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация, че заявлението и приложените към него документи са предоставени от заявителя" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Актуален дружествен договор/учредителен акт/устав" ApplicationType="A4" />
+					</Documents>
+				</IncomingPackageInfo>
+				<SubDeed SubUIC="12345" SubUICType="MainCircumstances">
+					<SoleCapitalOwner FieldOperation="Add" FieldIdent="00230" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:33:28" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+							<Indent>110905</Indent>
+							<Name>ТЕСТ А А</Name>
+							<IndentType>BirthDate</IndentType>
+							<CountryID>217</CountryID>
+							<CountryName>ТУРЦИЯ</CountryName>
+						</Subject>
+					</SoleCapitalOwner>
+				</SubDeed>
+			</Deed>
+			<Deed DeedStatus="N" CompanyNAme="Тест" GUID="Тест" UIC="12345" LegalForm="EOOD" xmlns="http://www.registryagency.bg/schemas/deedv2">
+				<IncomingPackageInfo IncomingNumber="20141222150554" IncomingGUID="Тест" PackageType="New" LeadingApp="A4">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец А4" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация по чл. 142" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Протокол от учредително събрание" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документ за внесена държавна такса" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Нотариално заверено съгласие и образец от саморъчния подпис на управител" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документ за внесен в банка капитал" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Изрично писмено пълномощно" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация, че заявлението и приложените към него документи са предоставени от заявителя" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Актуален дружествен договор/учредителен акт/устав" ApplicationType="A4" />
+					</Documents>
+				</IncomingPackageInfo>
+				<SubDeed SubUIC="12345" SubUICType="MainCircumstances">
+					<UIC FieldOperation="Add" FieldIdent="00010" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-01-05T09:39:47" RecordID="1" GroupID="1" UIC="12345" IsNew="true" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<CompanyControl />
+						<BulstatDeed>
+							<Deed />
+							<Year />
+							<CourtCode />
+						</BulstatDeed>
+					</UIC>
+					<Company FieldOperation="Add" FieldIdent="00020" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-01-05T09:39:47" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">ТЕСТТЕСТ</Company>
+					<LegalForm FieldOperation="Add" FieldIdent="00030" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" RecordID="1" GroupID="1" Text="Еднолично дружество с ограничена отговорност" Code="10" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields" />
+					<Transliteration FieldOperation="Add" FieldIdent="00040" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">TESTTEST</Transliteration>
+					<Seat FieldOperation="Add" FieldIdent="00050" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Address>
+							<CountryID>1</CountryID>
+							<CountryCode>BGR</CountryCode>
+							<Country>БЪЛГАРИЯ</Country>
+							<IsForeign>false</IsForeign>
+							<DistrictID>36</DistrictID>
+							<DistrictEkatte>GAB</DistrictEkatte>
+							<District>Габрово</District>
+							<Municipalityid>205</Municipalityid>
+							<MunicipalityEkatte>GAB29</MunicipalityEkatte>
+							<Municipality>Севлиево</Municipality>
+							<SettlementID>3516</SettlementID>
+							<SettlementEKATTE>65927</SettlementEKATTE>
+							<Settlement>гр. Севлиево</Settlement>
+							<AreaID xsi:nil="true" />
+							<Area />
+							<AreaEkatte />
+							<PostCode>5400</PostCode>
+							<ForeignPlace />
+							<Street />
+							<StreetNumber>1</StreetNumber>
+							<Block />
+							<Entrance>А</Entrance>
+							<Floor />
+							<Apartment>1</Apartment>
+						</Address>
+						<Contacts>
+							<Phone />
+							<Fax />
+							<EMail />
+							<URL />
+						</Contacts>
+					</Seat>
+					<SubjectOfActivity FieldOperation="Add" FieldIdent="00060" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" RecordID="1" GroupID="1" IsBank="false" IsBankText="" IsInsurer="false" IsInsurerText="" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">ПОКУПКА НА СТОКИ ИЛИ ДРУГИ ВЕЩИ С ЦЕЛ ПРЕПРОДАЖБА</SubjectOfActivity>
+					<Managers FieldOperation="Add" FieldIdent="00070" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Manager RecordIncomingNumber="1" RecordID="1" GroupID="1">
+							<Person CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>7777777777</Indent>
+								<Name>ПЕТЪР ТЕСТ ТЕСТ</Name>
+								<IndentType>EGN</IndentType>
+								<CountryID>1</CountryID>
+								<CountryName>БЪЛГАРИЯ</CountryName>
+							</Person>
+						</Manager>
+					</Managers>
+					<SoleCapitalOwner FieldOperation="Add" FieldIdent="00230" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+							<Indent>7777777777</Indent>
+							<Name>ПЕТЪР ТЕСТ ТЕСТ</Name>
+							<IndentType>EGN</IndentType>
+							<CountryID>1</CountryID>
+							<CountryName>БЪЛГАРИЯ</CountryName>
+						</Subject>
+					</SoleCapitalOwner>
+					<Funds FieldOperation="Add" FieldIdent="00310" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" RecordID="1" GroupID="1" euro="0" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">10</Funds>
+					<DepositedFunds FieldOperation="Add" FieldIdent="00320" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" RecordID="1" GroupID="1" euro="0" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">10</DepositedFunds>
+				</SubDeed>
+				<SubDeed SubUIC="12345" SubUICType="G1_ActAnnouncement">
+					<StatementsAJ FieldOperation="Add" FieldIdent="1001AJ" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:39:47" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<StatementAJ RecordIncomingNumber="1" RecordID="1" GroupID="1" ActModeText="Актуален дружествен договор/учредителен акт/устав" ActModeValue="36" Description="" ActDate="" ActYear="" ActID="1" ActWithErasedPersonalData="0" />
+					</StatementsAJ>
+				</SubDeed>
+			</Deed>
+			<Deed DeedStatus="E" CompanyNAme="Тест" GUID="Тест" UIC="12345" LegalForm="EOOD" xmlns="http://www.registryagency.bg/schemas/deedv2">
+				<IncomingPackageInfo IncomingNumber="20141222152525" IncomingGUID="Тест" PackageType="ForChange" LeadingApp="A4">
+					<Documents>
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Сканирано копие на заявление образец А4" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Документ за внесена държавна такса" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="ПРОТОКОЛ" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Договор за прехвърляне на дружествен дял с нотариална заверка на подписите" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="Декларация относно истинността на заявените за вписване обстоятелства и приемането на представените за обявяване актове" ApplicationType="A4" />
+						<Document DocumentURL="https://public.brra.bg/Documents/12345" DocGUID="Тест" Description="УЧРЕДИТЕЛЕН ПРОТОКОЛ" ApplicationType="A4" />
+					</Documents>
+				</IncomingPackageInfo>
+				<SubDeed SubUIC="12345" SubUICType="MainCircumstances">
+					<SubjectOfActivity FieldOperation="Add" FieldIdent="00060" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:43:54" RecordID="1" GroupID="1" IsBank="false" IsBankText="" IsInsurer="false" IsInsurerText="" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">Конструиране на електронни схеми; проектиране и продажба на електронни модули с интелектуална собственост (IР); извършване на консултантски услуги в сферата на микроелектроника и фотоника; производство, търговия и продажба на електронни устройства. Търговска дейност с химически продукти и метали; селскостопаиска продукция; производство и търговия с хранителни стоки; както и всички други дейности разрешени от закона и съгласно изискванията на действащото законодателство.</SubjectOfActivity>
+					<SoleCapitalOwner FieldOperation="Add" FieldIdent="00230" RecordIncomingNumber="1" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:43:54" RecordID="1" GroupID="1" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+							<Indent>1111111111</Indent>
+							<Name>ДИЯН ТЕСТ ТЕСТ</Name>
+							<IndentType>EGN</IndentType>
+							<CountryID>1</CountryID>
+							<CountryName>БЪЛГАРИЯ</CountryName>
+						</Subject>
+					</SoleCapitalOwner>
+					<ShareTransfers FieldOperation="Add" FieldIdent="00240" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:43:54" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<ShareTransfer RecordIncomingNumber="1" RecordID="1" GroupID="1">
+							<OldOwner CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>9999999999</Indent>
+								<Name>ТЕСТ ТЕСТ МАРИНОВ</Name>
+								<IndentType>EGN</IndentType>
+								<CountryID xsi:nil="true" />
+								<CountryName />
+							</OldOwner>
+							<NewOwner CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
+								<Indent>1111111111</Indent>
+								<Name>ДИЯН ТЕСТ ТЕСТ</Name>
+								<IndentType>EGN</IndentType>
+								<CountryID xsi:nil="true" />
+								<CountryName />
+							</NewOwner>
+							<ShareAmount>5000</ShareAmount>
+							<Date>22.12.2010</Date>
+							<OldOwnerCountryID>1</OldOwnerCountryID>
+							<OldOwnerCountryName>БЪЛГАРИЯ</OldOwnerCountryName>
+							<NewOwnerCountryID>1</NewOwnerCountryID>
+							<NewOwnerCountryName>БЪЛГАРИЯ</NewOwnerCountryName>
+						</ShareTransfer>
+					</ShareTransfers>
+				</SubDeed>
+				<SubDeed SubUIC="12345" SubUICType="G1_ActAnnouncement">
+					<StatementsAJ FieldOperation="Add" FieldIdent="1001AJ" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:43:54" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
+						<StatementAJ RecordIncomingNumber="1" RecordID="1" GroupID="1" ActModeText="Актуален дружествен договор/учредителен акт/устав" ActModeValue="36" Description="" ActDate="" ActYear="" ActID="1" ActWithErasedPersonalData="0" />
+					</StatementsAJ>
+				</SubDeed>
+			</Deed>
+		</Deeds>
+	</Body>
+</Message>
