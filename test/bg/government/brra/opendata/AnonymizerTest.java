@@ -30,11 +30,17 @@ public class AnonymizerTest {
         try {
             Anonymizer.processFile(in, writer);
             String result = writer.toString();
+            // test that the Identifiers are anonymized
             String[] identifiers = new String[] {"1111111111", "2222222222", "3333333333", "4444444444", "5555555555", "7777777777", "9999999999"};
             for (String id : identifiers) {
                 if (result.contains(id)) {
                     throw new IllegalStateException("Identifier is not anonymized");
                 }
+            }
+            
+            // test that the document URLs are removed
+            if (result.contains("https://public.brra.bg/Documents/12345") || result.contains("DocumentURL")) {
+                throw new IllegalStateException("Document URLs are not removed");
             }
             
             // test that some common content were preserved

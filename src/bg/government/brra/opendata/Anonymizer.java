@@ -11,7 +11,10 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -23,10 +26,13 @@ import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 public class Anonymizer {
 
+    private static final String DOCUMENT_URL_ATTRIBUTE = "DocumentURL";
     private static final String IDENTIFIER_TYPE_ELEMENT = "IndentType";
     private static final String IDENTIFIER_ELEMENT = "Indent";
     // per-person salts. Stored in serialized form and reused between runs of the program, so that each person
@@ -87,6 +93,7 @@ public class Anonymizer {
             UnsupportedEncodingException {
         XMLEventWriter eventWriter = factory.createXMLEventWriter(writer);
         XMLEventReader eventReader = inFactory.createXMLEventReader(in);
+        XMLEventFactory eventFactory = XMLEventFactory.newFactory();
         
         boolean identifierStarted = false;
         boolean indentTypeStarted = false;
@@ -94,7 +101,7 @@ public class Anonymizer {
         String identifier = "";
         while (eventReader.hasNext()) {
             // The logic is as follows:
-            // write all elements, except <Indent>. Store the <Indent< and <IndentType> in local variables, and 
+            // write all elements, except <Indent>. Store the <Indent> and <IndentType> in local variables, and 
             // at the end of the parent element, append the <Indent> - anonymized, if it was an EGN. 
             // (Identifiers are only present for Person and Subject elements.)
             XMLEvent event = eventReader.nextEvent();
@@ -103,10 +110,25 @@ public class Anonymizer {
                 identifierStarted = true;
             } else if (event.getEventType() == XMLEvent.END_ELEMENT && event.asEndElement().getName().getLocalPart().equals(IDENTIFIER_ELEMENT)) {
                 identifierStarted = false;
+            } else if (event.getEventType() == XMLEvent.START_ELEMENT && event.asStartElement().getAttributeByName(new QName(DOCUMENT_URL_ATTRIBUTE)) != null) {
+                // we don't want to give the document URLs - they are unstructured (image) data which gets 
+                // scraped and puts a lot of pressure on the servers
+                StartElement original = event.asStartElement();
+                @SuppressWarnings("unchecked")
+                Iterator<Attribute> attributes = original.getAttributes();
+                List<Attribute> allowedAttributes = new ArrayList<>();
+                while (attributes.hasNext()) {
+                    Attribute attr = attributes.next();
+                    if (!attr.getName().getLocalPart().equals(DOCUMENT_URL_ATTRIBUTE)) {
+                        allowedAttributes.add(attr);
+                    }
+                }
+                event = eventFactory.createStartElement(original.getName(), allowedAttributes.iterator(), original.getNamespaces());
+                eventWriter.add(event);
             } else if (!identifierStarted){
                 eventWriter.add(event);
             }
-            
+
             if (event.getEventType() == XMLEvent.START_ELEMENT && event.asStartElement().getName().getLocalPart().equals(IDENTIFIER_TYPE_ELEMENT)) {
                 indentTypeStarted = true;
             }
