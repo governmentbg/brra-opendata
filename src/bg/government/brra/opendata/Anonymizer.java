@@ -53,40 +53,44 @@ public class Anonymizer {
     }
     
     public static void main(String[] args) throws Exception {
-        if (args.length != 4) {
+        if (args.length != 2) {
             System.out.println("Program arguments: rootDir targetDir year month");
             System.exit(0);
         }
         String root = args[0];
         String targetDir = args[1];
-        String year = args[2];
-        String month = args[3];
         
         salts = deserializeSalts();
-        
-        File dir = new File(root + "/" + year + "/" + month);
-        
-                
-        File target = new File(targetDir, year + "/" + month + "/");
-        target.mkdirs();
-        
-        // iterating all files in the directory, and parsing them. Outputting their content exactly as it is to the result file,
-        // except for personal identifiers, which are anonymized using a salted hash.
-        for (File file : dir.listFiles()) {
-            try (InputStream in = new FileInputStream(file)) {
-                try (Writer writer = new OutputStreamWriter(new FileOutputStream(new File(targetDir, year + "/" + month + "/" + file.getName())), "UTF-8")) {
-                    processFile(in, writer);
-                } catch (Exception ex) {
-                    // abort the whole process
-                    throw new RuntimeException(ex);
+
+        try {
+            for (int year = 2008; year <= 2016; year++) {
+                for (int month = 1; month <= 12; month++) {
+                    File dir = new File(root + "/" + year + "/" + month);
+                    
+                            
+                    File target = new File(targetDir, year + "/" + month + "/");
+                    target.mkdirs();
+                    
+                    // iterating all files in the directory, and parsing them. Outputting their content exactly as it is to the result file,
+                    // except for personal identifiers, which are anonymized using a salted hash.
+                    for (File file : dir.listFiles()) {
+                        try (InputStream in = new FileInputStream(file)) {
+                            try (Writer writer = new OutputStreamWriter(new FileOutputStream(new File(targetDir, year + "/" + month + "/" + file.getName())), "UTF-8")) {
+                                processFile(in, writer);
+                            } catch (Exception ex) {
+                                // abort the whole process
+                                throw new RuntimeException(ex);
+                            }
+                        } catch (Exception ex) {
+                            // abort the whole process
+                            throw new RuntimeException(ex);
+                        }
+                    }
                 }
-            } catch (Exception ex) {
-                // abort the whole process
-                throw new RuntimeException(ex);
-            }
+            }            
+        } finally {
+            serializeSalts();
         }
-        
-        serializeSalts();
     }
 
     static void processFile(InputStream in, Writer writer) throws XMLStreamException,
@@ -110,6 +114,12 @@ public class Anonymizer {
                 identifierStarted = true;
             } else if (event.getEventType() == XMLEvent.END_ELEMENT && event.asEndElement().getName().getLocalPart().equals(IDENTIFIER_ELEMENT)) {
                 identifierStarted = false;
+                // if the identifier type is already parsed, we are ready to write the identifier
+                if (!identifierType.isEmpty()) {
+                    writeIdentifier(eventWriter, eventFactory, identifierType, identifier, event.asEndElement().getName());
+                    identifier = "";
+                    identifierType = "";
+                }
             } else if (event.getEventType() == XMLEvent.START_ELEMENT && event.asStartElement().getAttributeByName(new QName(DOCUMENT_URL_ATTRIBUTE)) != null) {
                 // we don't want to give the document URLs - they are unstructured (image) data which gets 
                 // scraped and puts a lot of pressure on the servers
@@ -135,6 +145,12 @@ public class Anonymizer {
             
             if (event.getEventType() == XMLEvent.END_ELEMENT && event.asEndElement().getName().getLocalPart().equals(IDENTIFIER_TYPE_ELEMENT)) {
                 indentTypeStarted = false;
+                // if the identifier is already parsed, we are ready to write it
+                if (!identifier.isEmpty()) {
+                    writeIdentifier(eventWriter, eventFactory, identifierType, identifier, event.asEndElement().getName());
+                    identifier = "";
+                    identifierType = "";
+                }
             }
             
             // assuming all characters will be pushed as one event, as the strings are very short
@@ -145,24 +161,22 @@ public class Anonymizer {
                     identifier = event.asCharacters().getData();
                 }
             }
-        
-            if (event.getEventType() == XMLEvent.END_ELEMENT) {
-                QName xmlName = event.asEndElement().getName();
-                String name = xmlName.getLocalPart();
-                if (name.equals("Person") || name.equals("Subject")) {
-                    String prefix = xmlName.getPrefix();
-                    String uri = xmlName.getNamespaceURI();
-                    // always output the identifier, but hash it if it's EGN
-                    if (identifierType.equals("EGN")) {
-                        String salt = getSalt(identifier);
-                        identifier = DatatypeConverter.printHexBinary(digester.digest((salt + identifier).getBytes("UTF-8")));
-                    }
-                    eventWriter.add(eventFactory.createStartElement(prefix, uri, IDENTIFIER_ELEMENT));
-                    eventWriter.add(eventFactory.createCharacters(identifier));
-                    eventWriter.add(eventFactory.createEndElement(prefix, uri, IDENTIFIER_ELEMENT));
-                }
-            }
         }
+    }
+
+    private static void writeIdentifier(XMLEventWriter eventWriter, XMLEventFactory eventFactory,
+            String identifierType, String identifier, QName xmlName) throws UnsupportedEncodingException,
+            XMLStreamException {
+        String prefix = xmlName.getPrefix();
+        String uri = xmlName.getNamespaceURI();
+        // always output the identifier, but hash it if it's EGN
+        if (identifierType.equals("EGN")) {
+            String salt = getSalt(identifier);
+            identifier = DatatypeConverter.printHexBinary(digester.digest((salt + identifier).getBytes("UTF-8")));
+        }
+        eventWriter.add(eventFactory.createStartElement(prefix, uri, IDENTIFIER_ELEMENT));
+        eventWriter.add(eventFactory.createCharacters(identifier));
+        eventWriter.add(eventFactory.createEndElement(prefix, uri, IDENTIFIER_ELEMENT));
     }
 
     @SuppressWarnings("unchecked")

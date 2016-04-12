@@ -38,6 +38,10 @@ public class AnonymizerTest {
                 }
             }
             
+            if (result.contains("</Person><Indent>")) {
+                throw new IllegalStateException("<Indent> tag is at the wrong place");
+            }
+            
             // test that the document URLs are removed
             if (result.contains("https://public.brra.bg/Documents/12345") || result.contains("DocumentURL")) {
                 throw new IllegalStateException("Document URLs are not removed");
