@@ -187,10 +187,9 @@
 						<BranchManager RecordIncomingNumber="20120228112249"
 							RecordID="27697742" GroupID="8895224">
 							<Person IsForeignTraderText="0">
-								<Name>Костадин Димитров Караджов</Name>
+								<Name>Пешо Петров Петров</Name>
 								<IndentType>EGN</IndentType>
-								<Indent>B48757E1E664B9A149D681BE9E933751983864691A26BE15427D62B9505E447D
-								</Indent>
+								<Indent>12345678</Indent>
 								<CountryID xsi:nil="true"></CountryID>
 								<CountryName></CountryName>
 							</Person>
