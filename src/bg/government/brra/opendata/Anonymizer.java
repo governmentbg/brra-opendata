@@ -42,7 +42,7 @@ public class Anonymizer {
     private static final List<String> ANONYMIZABLE_ADDRESS_PARENTS = Arrays.asList(new String[] {
         "BranchManager", "ActualOwner", "AtPawnCreditor", "DebtorOverSecureClaim", "Depositor", 
         "Depozitar", "Distraint", "LimitedLiabilityPartner", "ManagerOfTradeEnterprise", "PersonConcerned", "PledgeCreditor", 
-        "PledgeExecutionDepozitar", "Pledgor", "Procurator", "CoOperative2", "SecuredClaimDebtors", "SpecialManager", 
+        "PledgeExecutionDepozitar", "Pledgor", "Procurator", "CoOperative2", "SecuredClaimDebtor", "SpecialManager", 
         "SupervisionBodyMember", "SupervisionBodyMemberFull", "SupervisionBodyMemberFullSecIns", "SupervisionBodyMemberFullThirdIns", 
         "SupervisionBodyMemberFullSecIns", "Trustee", "TrusteeSecIns", "TrusteeThirdIns", "UnlimitedLiabilityPartner"}); 
 
