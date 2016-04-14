@@ -12,6 +12,7 @@ import java.io.Writer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -35,6 +36,16 @@ public class Anonymizer {
     private static final String DOCUMENT_URL_ATTRIBUTE = "DocumentURL";
     private static final String IDENTIFIER_TYPE_ELEMENT = "IndentType";
     private static final String IDENTIFIER_ELEMENT = "Indent";
+    private static final String PASSPORT_ELEMENT = "Passport";
+    private static final String ADDRESS_ELEMENT = "Address";
+    // all of these elements may hold addresses that should be anonymized
+    private static final List<String> ANONYMIZABLE_ADDRESS_PARENTS = Arrays.asList(new String[] {
+        "BranchManager", "ActualOwner", "AtPawnCreditor", "DebtorOverSecureClaim", "Depositor", 
+        "Depozitar", "Distraint", "LimitedLiabilityPartner", "ManagerOfTradeEnterprise", "PersonConcerned", "PledgeCreditor", 
+        "PledgeExecutionDepozitar", "Pledgor", "Procurator", "CoOperative2", "SecuredClaimDebtors", "SpecialManager", 
+        "SupervisionBodyMember", "SupervisionBodyMemberFull", "SupervisionBodyMemberFullSecIns", "SupervisionBodyMemberFullThirdIns", 
+        "SupervisionBodyMemberFullSecIns", "Trustee", "TrusteeSecIns", "TrusteeThirdIns", "UnlimitedLiabilityPartner"}); 
+
     // per-person salts. Stored in serialized form and reused between runs of the program, so that each person
     // has a the same anonymized identifier
     private static Map<String, String> salts = new HashMap<>();
@@ -101,6 +112,9 @@ public class Anonymizer {
         
         boolean identifierStarted = false;
         boolean indentTypeStarted = false;
+        boolean passportStarted = false;
+        boolean anonymizableAddressParentStarted = false;
+        boolean addressStarted = false;
         String identifierType = "";
         String identifier = "";
         while (eventReader.hasNext()) {
@@ -135,7 +149,14 @@ public class Anonymizer {
                 }
                 event = eventFactory.createStartElement(original.getName(), allowedAttributes.iterator(), original.getNamespaces());
                 eventWriter.add(event);
-            } else if (!identifierStarted){
+            } else if (event.getEventType() == XMLEvent.START_ELEMENT && event.asStartElement().getName().getLocalPart().equals(PASSPORT_ELEMENT)) {
+                passportStarted = true;
+            } else if (event.getEventType() == XMLEvent.START_ELEMENT && event.asStartElement().getName().getLocalPart().equals(ADDRESS_ELEMENT)) {
+                addressStarted = true;
+                eventWriter.add(event); //write start address tag, but contents will not be written if they shouldn't
+            } else if (event.getEventType() == XMLEvent.START_ELEMENT && ANONYMIZABLE_ADDRESS_PARENTS.contains(event.asStartElement().getName().getLocalPart())) {
+                anonymizableAddressParentStarted = true;
+            } else if (!identifierStarted && !passportStarted && !(anonymizableAddressParentStarted && addressStarted)){
                 eventWriter.add(event);
             }
 
@@ -151,6 +172,16 @@ public class Anonymizer {
                     identifier = "";
                     identifierType = "";
                 }
+            }
+            
+            if (event.getEventType() == XMLEvent.END_ELEMENT && event.asEndElement().getName().getLocalPart().equals(PASSPORT_ELEMENT)) {
+                passportStarted = false;
+            }
+            if (event.getEventType() == XMLEvent.END_ELEMENT && event.asEndElement().getName().getLocalPart().equals(ADDRESS_ELEMENT)) {
+                addressStarted = false;
+            }
+            if (event.getEventType() == XMLEvent.END_ELEMENT && ANONYMIZABLE_ADDRESS_PARENTS.contains(event.asEndElement().getName().getLocalPart())) {
+                anonymizableAddressParentStarted = false;
             }
             
             // assuming all characters will be pushed as one event, as the strings are very short

@@ -47,6 +47,14 @@ public class AnonymizerTest {
                 throw new IllegalStateException("Document URLs are not removed");
             }
             
+            if (result.contains("<Area>р-н Младост</Area>") || result.contains("<Block>123</Block>")) {
+                throw new IllegalStateException("Personal address not anonymized");
+            }
+            
+            if (result.contains("Passport") || result.contains("<Number>1234567</Number>")) {
+                throw new IllegalStateException("Passport details not anonymized");
+            }
+            
             // test that some common content were preserved
             String[] keywords = new String[] {"Годишен финансов отчет", "Сканирано копие на заявление образец Г2", "TransferringEnterprise", "IncomingPackageInfo", "ТЕСТТЕСТ"};
             for (String keyword : keywords) {

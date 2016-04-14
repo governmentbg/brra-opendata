@@ -181,6 +181,53 @@
 							</Subject>
 						</AcquisitionEnterprise>
 					</AcquisitionEnterprises>
+					<BranchManagers	xmlns="http://www.registryagency.bg/schemas/deedv2/Fields" FieldIdent="00530"
+						FieldActionDate="2012-03-01T13:50:52" FieldEntryNumber="20120301135052"
+						FieldOperation="Add">
+						<BranchManager RecordIncomingNumber="20120228112249"
+							RecordID="27697742" GroupID="8895224">
+							<Person IsForeignTraderText="0">
+								<Name>Костадин Димитров Караджов</Name>
+								<IndentType>EGN</IndentType>
+								<Indent>B48757E1E664B9A149D681BE9E933751983864691A26BE15427D62B9505E447D
+								</Indent>
+								<CountryID xsi:nil="true"></CountryID>
+								<CountryName></CountryName>
+							</Person>
+							<Address>
+								<CountryID>1</CountryID>
+								<CountryCode>BGR</CountryCode>
+								<Country>БЪЛГАРИЯ</Country>
+								<IsForeign>false</IsForeign>
+								<DistrictID>1</DistrictID>
+								<DistrictEkatte>SOF</DistrictEkatte>
+								<District>София (столица)</District>
+								<Municipalityid>1</Municipalityid>
+								<MunicipalityEkatte>SOF46</MunicipalityEkatte>
+								<Municipality>Столична</Municipality>
+								<SettlementID>1</SettlementID>
+								<SettlementEKATTE>123</SettlementEKATTE>
+								<Settlement>гр. София</Settlement>
+								<AreaID>123</AreaID>
+								<Area>р-н Младост</Area>
+								<AreaEkatte>123</AreaEkatte>
+								<PostCode>123</PostCode>
+								<ForeignPlace></ForeignPlace>
+								<HousingEstate>Младост 1</HousingEstate>
+								<Street></Street>
+								<StreetNumber></StreetNumber>
+								<Block>123</Block>
+								<Entrance>12</Entrance>
+								<Floor>12</Floor>
+								<Apartment>123</Apartment>
+							</Address>
+							<Passport>
+								<Number>1234567</Number>
+								<IssueDate>02.01.2010</IssueDate>
+								<IssuedFrom>МВР София</IssuedFrom>
+							</Passport>
+						</BranchManager>
+					</BranchManagers>
 				</SubDeed>
 			</Deed>
 			<Deed DeedStatus="N" CompanyNAme="Тест" GUID="Тест" UIC="12345" LegalForm="OOD" xmlns="http://www.registryagency.bg/schemas/deedv2">
