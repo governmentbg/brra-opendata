@@ -38,6 +38,9 @@ public class Anonymizer {
     private static final String IDENTIFIER_ELEMENT = "Indent";
     private static final String PASSPORT_ELEMENT = "Passport";
     private static final String ADDRESS_ELEMENT = "Address";
+    
+    private static final String ID_CARD_PATTERN = "(л.к.|Л.К.|л.к|лична карта)( ){0,1}№( ){0,1}{0,1}\\d{9}";
+    
     // all of these elements may hold addresses that should be anonymized
     private static final List<String> ANONYMIZABLE_ADDRESS_PARENTS = Arrays.asList(new String[] {
         "BranchManager", "ActualOwner", "AtPawnCreditor", "DebtorOverSecureClaim", "Depositor", 
@@ -46,6 +49,9 @@ public class Anonymizer {
         "SupervisionBodyMember", "SupervisionBodyMemberFull", "SupervisionBodyMemberFullSecIns", "SupervisionBodyMemberFullThirdIns", 
         "SupervisionBodyMemberFullSecIns", "Trustee", "TrusteeSecIns", "TrusteeThirdIns", "UnlimitedLiabilityPartner"}); 
 
+    // full-text elements potentially containing personal data
+    private static final List<String> IGNORED_ELEMENT_CONTENTS = Arrays.asList(new String[] {"Description033"});
+    
     // per-person salts. Stored in serialized form and reused between runs of the program, so that each person
     // has a the same anonymized identifier
     private static Map<String, String> salts = new HashMap<>();
@@ -115,6 +121,7 @@ public class Anonymizer {
         boolean passportStarted = false;
         boolean anonymizableAddressParentStarted = false;
         boolean addressStarted = false;
+        boolean ignoredElementStarted = false;
         String identifierType = "";
         String identifier = "";
         while (eventReader.hasNext()) {
@@ -156,8 +163,16 @@ public class Anonymizer {
                 eventWriter.add(event); //write start address tag, but contents will not be written if they shouldn't
             } else if (event.getEventType() == XMLEvent.START_ELEMENT && ANONYMIZABLE_ADDRESS_PARENTS.contains(event.asStartElement().getName().getLocalPart())) {
                 anonymizableAddressParentStarted = true;
-            } else if (!identifierStarted && !passportStarted && !(anonymizableAddressParentStarted && addressStarted)){
-                eventWriter.add(event);
+            } else if (event.getEventType() == XMLEvent.START_ELEMENT && IGNORED_ELEMENT_CONTENTS.contains(event.asStartElement().getName().getLocalPart())) {
+                ignoredElementStarted = true;
+            } else if (!identifierStarted && !passportStarted && !(anonymizableAddressParentStarted && addressStarted) && !ignoredElementStarted){
+                if (event.getEventType() == XMLEvent.CHARACTERS) {
+                    // remove all references to identity card before adding character event
+                    String anonymizedContent = event.asCharacters().getData().replaceAll(ID_CARD_PATTERN, "");
+                    eventWriter.add(eventFactory.createCharacters(anonymizedContent));
+                } else {
+                    eventWriter.add(event);
+                }
             }
 
             if (event.getEventType() == XMLEvent.START_ELEMENT && event.asStartElement().getName().getLocalPart().equals(IDENTIFIER_TYPE_ELEMENT)) {
@@ -182,6 +197,9 @@ public class Anonymizer {
             }
             if (event.getEventType() == XMLEvent.END_ELEMENT && ANONYMIZABLE_ADDRESS_PARENTS.contains(event.asEndElement().getName().getLocalPart())) {
                 anonymizableAddressParentStarted = false;
+            }
+            if (event.getEventType() == XMLEvent.END_ELEMENT && IGNORED_ELEMENT_CONTENTS.contains(event.asEndElement().getName().getLocalPart())) {
+                ignoredElementStarted = false;
             }
             
             // assuming all characters will be pushed as one event, as the strings are very short
