@@ -72,7 +72,7 @@ public class Anonymizer {
     
     public static void main(String[] args) throws Exception {
         if (args.length != 2) {
-            System.out.println("Program arguments: rootDir targetDir year month");
+            System.out.println("Program arguments: rootDir targetDir");
             System.exit(0);
         }
         String root = args[0];
