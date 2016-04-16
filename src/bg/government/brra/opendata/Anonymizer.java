@@ -40,6 +40,7 @@ public class Anonymizer {
     private static final String ADDRESS_ELEMENT = "Address";
     
     private static final String ID_CARD_PATTERN = "(л.к.|Л.К.|л.к|лична карта)( ){0,1}№( ){0,1}{0,1}\\d{9}";
+    private static final String PERSONAL_ID_PATTERN = "(ЕГН|ЛНЧ)(:){0,1}( ){0,1}\\d{10}";
     
     // all of these elements may hold addresses that should be anonymized
     private static final List<String> ANONYMIZABLE_ADDRESS_PARENTS = Arrays.asList(new String[] {
@@ -167,8 +168,10 @@ public class Anonymizer {
                 ignoredElementStarted = true;
             } else if (!identifierStarted && !passportStarted && !(anonymizableAddressParentStarted && addressStarted) && !ignoredElementStarted){
                 if (event.getEventType() == XMLEvent.CHARACTERS) {
-                    // remove all references to identity card before adding character event
+                    // remove all references to identity card and personal identifiers from freetext before adding character event
+                    // these references should be cleaned by the agency
                     String anonymizedContent = event.asCharacters().getData().replaceAll(ID_CARD_PATTERN, "");
+                    anonymizedContent = anonymizedContent.replaceAll(PERSONAL_ID_PATTERN, "");
                     eventWriter.add(eventFactory.createCharacters(anonymizedContent));
                 } else {
                     eventWriter.add(event);

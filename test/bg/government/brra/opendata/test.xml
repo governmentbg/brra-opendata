@@ -187,11 +187,11 @@
 						<BranchManager RecordIncomingNumber="20120228112249"
 							RecordID="27697742" GroupID="8895224">
 							<Person IsForeignTraderText="0">
-								<Name>Пешо Петров Петров</Name>
+								<Name>Пешо Петров Петров, ЕГН 1234567890;</Name>
 								<IndentType>EGN</IndentType>
 								<Indent>12345678</Indent>
 								<CountryID xsi:nil="true"></CountryID>
-								<CountryName></CountryName>
+								<CountryName>Компания, ЛНЧ: 1234567890;</CountryName>
 							</Person>
 							<Address>
 								<CountryID>1</CountryID>

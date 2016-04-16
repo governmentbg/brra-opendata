@@ -55,6 +55,10 @@ public class AnonymizerTest {
                 throw new IllegalStateException("Passport details not anonymized");
             }
             
+            if (result.contains("ЕГН 1234567890") || result.contains("ЛНЧ")) {
+                throw new IllegalStateException("EGN or LNCH not anonymized");
+            }
+            
             // test that some common content were preserved
             String[] keywords = new String[] {"Годишен финансов отчет", "Сканирано копие на заявление образец Г2", "TransferringEnterprise", "IncomingPackageInfo", "ТЕСТТЕСТ"};
             for (String keyword : keywords) {
