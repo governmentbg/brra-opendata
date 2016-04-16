@@ -40,7 +40,7 @@ public class Anonymizer {
     private static final String ADDRESS_ELEMENT = "Address";
     
     private static final String ID_CARD_PATTERN = "(л.к.|Л.К.|л.к|лична карта)( ){0,1}№( ){0,1}{0,1}\\d{9}";
-    private static final String PERSONAL_ID_PATTERN = "(ЕГН|ЛНЧ)(:){0,1}( ){0,1}\\d{10}";
+    private static final String PERSONAL_ID_PATTERN = "(ЕГН|ЛНЧ)(:|-){0,1}( ){0,1}\\d{10}";
     
     // all of these elements may hold addresses that should be anonymized
     private static final List<String> ANONYMIZABLE_ADDRESS_PARENTS = Arrays.asList(new String[] {

@@ -174,7 +174,7 @@
 						<AcquisitionEnterprise RecordIncomingNumber="1" RecordID="1" GroupID="1">
 							<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">
 								<Indent>1234556</Indent>
-								<Name>ТЕСТ ТЕСТ</Name>
+								<Name>ТЕСТ ТЕСТ ЕГН- 1234567890</Name>
 								<IndentType>UIC</IndentType>
 								<CountryID xsi:nil="true" />
 								<CountryName />
