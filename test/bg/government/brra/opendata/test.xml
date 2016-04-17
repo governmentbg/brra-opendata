@@ -296,6 +296,44 @@
 							</Subject>
 						</Partner>
 					</Partners>
+					<Representatives
+						xmlns="http://www.registryagency.bg/schemas/deedv2/Fields" FieldIdent="00100"
+						FieldActionDate="2008-05-16T07:59:14" FieldEntryNumber="12345"
+						FieldOperation="Add">
+						<Representative RecordIncomingNumber="12345"
+							RecordID="1718" GroupID="286">
+							<Subject IsForeignTraderText="0">
+								<Name>Иван Иванов Иванов</Name>
+								<IndentType>EGN</IndentType>
+								<Indent>123456678</Indent>
+								<CountryID xsi:nil="true"></CountryID>
+								<CountryName></CountryName>
+							</Subject>
+							<Person IsForeignTraderText="0">
+								<Name></Name>
+								<IndentType>Undefined</IndentType>
+								<CountryID xsi:nil="true"></CountryID>
+								<CountryName></CountryName>
+							</Person>
+						</Representative>
+						<Representative RecordIncomingNumber="20080422155753"
+							RecordID="1585723" GroupID="288386">
+							<Subject IsForeignTraderText="0">
+								<Indent>551155115511</Indent>
+								<Name>Пешо Христов Димитров</Name>
+								<IndentType>EGN</IndentType>
+								<CountryID xsi:nil="true"></CountryID>
+								<CountryName></CountryName>
+							</Subject>
+							<Person IsForeignTraderText="0">
+								<Indent>11236897212</Indent>
+								<Name></Name>
+								<IndentType>Undefined</IndentType>
+								<CountryID xsi:nil="true"></CountryID>
+								<CountryName></CountryName>
+							</Person>
+						</Representative>
+					</Representatives>
 				</SubDeed>
 				<SubDeed SubUIC="12345" SubUICType="G1_ActAnnouncement">
 					<StatementsAJ FieldOperation="Add" FieldIdent="1001AJ" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:44" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">

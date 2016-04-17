@@ -31,7 +31,7 @@ public class AnonymizerTest {
             Anonymizer.processFile(in, writer);
             String result = writer.toString();
             // test that the Identifiers are anonymized
-            String[] identifiers = new String[] {"1111111111", "2222222222", "3333333333", "4444444444", "5555555555", "7777777777", "9999999999"};
+            String[] identifiers = new String[] {"1111111111", "2222222222", "3333333333", "4444444444", "5555555555", "7777777777", "9999999999", "551155115511"};
             for (String id : identifiers) {
                 if (result.contains(id)) {
                     throw new IllegalStateException("Identifier is not anonymized");

@@ -192,17 +192,28 @@ public class Anonymizer {
                 }
             }
             
-            if (event.getEventType() == XMLEvent.END_ELEMENT && event.asEndElement().getName().getLocalPart().equals(PASSPORT_ELEMENT)) {
-                passportStarted = false;
-            }
-            if (event.getEventType() == XMLEvent.END_ELEMENT && event.asEndElement().getName().getLocalPart().equals(ADDRESS_ELEMENT)) {
-                addressStarted = false;
-            }
-            if (event.getEventType() == XMLEvent.END_ELEMENT && ANONYMIZABLE_ADDRESS_PARENTS.contains(event.asEndElement().getName().getLocalPart())) {
-                anonymizableAddressParentStarted = false;
-            }
-            if (event.getEventType() == XMLEvent.END_ELEMENT && IGNORED_ELEMENT_CONTENTS.contains(event.asEndElement().getName().getLocalPart())) {
-                ignoredElementStarted = false;
+            if (event.getEventType() == XMLEvent.END_ELEMENT) {
+                String endTagName = event.asEndElement().getName().getLocalPart();
+                if (endTagName.equals(PASSPORT_ELEMENT)) {
+                    passportStarted = false;
+                }
+                if (endTagName.equals(ADDRESS_ELEMENT)) {
+                    addressStarted = false;
+                }
+                if (ANONYMIZABLE_ADDRESS_PARENTS.contains(endTagName)) {
+                    anonymizableAddressParentStarted = false;
+                }
+                if (IGNORED_ELEMENT_CONTENTS.contains(endTagName)) {
+                    ignoredElementStarted = false;
+                }
+                
+                // upon ending of Person or Subject, reset everything
+                if (endTagName.equals("Person") || endTagName.equals("Subject")) {
+                    identifierStarted = false;
+                    indentTypeStarted = false;
+                    identifierType = "";
+                    identifierType = "";
+                }
             }
             
             // assuming all characters will be pushed as one event, as the strings are very short
@@ -221,8 +232,8 @@ public class Anonymizer {
             XMLStreamException {
         String prefix = xmlName.getPrefix();
         String uri = xmlName.getNamespaceURI();
-        // always output the identifier, but hash it if it's EGN
-        if (identifierType.equals("EGN")) {
+        // always output the identifier, but hash it if it's EGN (or BirthDate or LNCH for foreigners) 
+        if (identifierType.equals("EGN") || identifierType.equals("BirthDate") || identifierType.equals("LNCH")) {
             String salt = getSalt(identifier);
             identifier = DatatypeConverter.printHexBinary(digester.digest((salt + identifier).getBytes("UTF-8")));
         }
