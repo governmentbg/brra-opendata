@@ -267,6 +267,17 @@
 					</Documents>
 				</IncomingPackageInfo>
 				<SubDeed SubUIC="12345" SubUICType="MainCircumstances">
+				    <Managers>
+                        <Manager RecordIncomingNumber="1234" RecordID="1234" GroupID="1234">
+                            <Person IsForeignTraderText="0">
+                                <Indent>1122334455</Indent>
+                                <Name>ПЕШО ЙОРДАНОВ ИВАНОВ</Name>
+                                <IndentType>EGN</IndentType>
+                                <CountryID xsi:nil="true"></CountryID>
+                                <CountryName></CountryName>
+                            </Person>
+                        </Manager>
+                    </Managers>
 					<Partners FieldOperation="Add" FieldIdent="00190" FieldEntryNumber="1" FieldActionDate="2011-04-05T09:25:44" xmlns="http://www.registryagency.bg/schemas/deedv2/Fields">
 						<Partner RecordIncomingNumber="1" RecordID="1" GroupID="1" share="50">
 							<Subject CompetentAuthorityForRegistration="" RegistrationNumber="" IsForeignTraderText="0">

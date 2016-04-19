@@ -208,7 +208,9 @@ public class Anonymizer {
                 }
                 
                 // upon ending of Person or Subject, reset everything
-                if (endTagName.equals("Person") || endTagName.equals("Subject")) {
+                if (endTagName.equals("Person") || endTagName.equals("Subject")
+                        || endTagName.equals("NewOwner") || endTagName.equals("OldOwner") 
+                        || endTagName.equals("BranchSubject") || endTagName.equals("Petitioner")) {
                     identifierStarted = false;
                     indentTypeStarted = false;
                     identifierType = "";
@@ -232,8 +234,8 @@ public class Anonymizer {
             XMLStreamException {
         String prefix = xmlName.getPrefix();
         String uri = xmlName.getNamespaceURI();
-        // always output the identifier, but hash it if it's EGN (or BirthDate or LNCH for foreigners) 
-        if (identifierType.equals("EGN") || identifierType.equals("BirthDate") || identifierType.equals("LNCH")) {
+        // always output the identifier, but hash it if it's EGN (or BirthDate or LNCH for foreigners). Undefined needed because sometimes there's EGN there
+        if (!identifier.isEmpty() && identifierType.equals("EGN") || identifierType.equals("BirthDate") || identifierType.equals("LNCH") || identifierType.equals("Undefined")) {
             String salt = getSalt(identifier);
             identifier = DatatypeConverter.printHexBinary(digester.digest((salt + identifier).getBytes("UTF-8")));
         }
