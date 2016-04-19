@@ -235,7 +235,7 @@ public class Anonymizer {
         String prefix = xmlName.getPrefix();
         String uri = xmlName.getNamespaceURI();
         // always output the identifier, but hash it if it's EGN (or BirthDate or LNCH for foreigners). Undefined needed because sometimes there's EGN there
-        if (!identifier.isEmpty() && identifierType.equals("EGN") || identifierType.equals("BirthDate") || identifierType.equals("LNCH") || identifierType.equals("Undefined")) {
+        if (!identifier.isEmpty() && (identifierType.equals("EGN") || identifierType.equals("BirthDate") || identifierType.equals("LNCH") || identifierType.equals("Undefined"))) {
             String salt = getSalt(identifier);
             identifier = DatatypeConverter.printHexBinary(digester.digest((salt + identifier).getBytes("UTF-8")));
         }
