@@ -34,6 +34,7 @@ import javax.xml.stream.events.XMLEvent;
 public class Anonymizer {
 
     private static final String DOCUMENT_URL_ATTRIBUTE = "DocumentURL";
+    private static final String DOCUMENT_GUID_ATTRIBUTE = "DocGuid";
     private static final String IDENTIFIER_TYPE_ELEMENT = "IndentType";
     private static final String IDENTIFIER_ELEMENT = "Indent";
     private static final String PASSPORT_ELEMENT = "Passport";
@@ -151,7 +152,7 @@ public class Anonymizer {
                 List<Attribute> allowedAttributes = new ArrayList<>();
                 while (attributes.hasNext()) {
                     Attribute attr = attributes.next();
-                    if (!attr.getName().getLocalPart().equals(DOCUMENT_URL_ATTRIBUTE)) {
+                    if (!attr.getName().getLocalPart().equals(DOCUMENT_URL_ATTRIBUTE) && !attr.getName().getLocalPart().equals(DOCUMENT_GUID_ATTRIBUTE)) {
                         allowedAttributes.add(attr);
                     }
                 }
