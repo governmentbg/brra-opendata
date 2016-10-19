@@ -72,17 +72,18 @@ public class Anonymizer {
     }
     
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.out.println("Program arguments: rootDir targetDir");
+        if (args.length != 2 || args.length != 3) {
+            System.out.println("Program arguments: rootDir targetDir maxYear(opt)");
             System.exit(0);
         }
         String root = args[0];
         String targetDir = args[1];
+        int maxYear = args.length == 3 ? Integer.parseInt(args[2]) : 2017;
         
         salts = deserializeSalts();
 
         try {
-            for (int year = 2008; year <= 2016; year++) {
+            for (int year = 2008; year <= maxYear; year++) {
                 for (int month = 1; month <= 12; month++) {
                     File dir = new File(root + "/" + year + "/" + month);
                     
