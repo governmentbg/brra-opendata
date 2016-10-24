@@ -11,6 +11,8 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,6 +35,9 @@ import javax.xml.stream.events.XMLEvent;
 
 public class Anonymizer {
 
+    private static DateTimeFormatter argumentParser = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+    private static DateTimeFormatter filenameParser = DateTimeFormatter.ofPattern("yyyyMMdd");
+    
     private static final String DOCUMENT_URL_ATTRIBUTE = "DocumentURL";
     private static final String DOCUMENT_GUID_ATTRIBUTE = "DocGuid";
     private static final String IDENTIFIER_TYPE_ELEMENT = "IndentType";
@@ -72,13 +77,14 @@ public class Anonymizer {
     }
     
     public static void main(String[] args) throws Exception {
-        if (args.length != 2 || args.length != 3) {
-            System.out.println("Program arguments: rootDir targetDir maxYear(opt)");
+        if (args.length < 2 || args.length > 4) {
+            System.out.println("Program arguments: rootDir targetDir since(opt) maxYear(opt)");
             System.exit(0);
         }
         String root = args[0];
         String targetDir = args[1];
-        int maxYear = args.length == 3 ? Integer.parseInt(args[2]) : 2017;
+        LocalDate since = args.length > 2 ? LocalDate.parse(args[2], argumentParser) : LocalDate.now().minusYears(20); 
+        int maxYear = args.length > 3 ? Integer.parseInt(args[3]) : 2017;
         
         salts = deserializeSalts();
 
@@ -87,13 +93,16 @@ public class Anonymizer {
                 for (int month = 1; month <= 12; month++) {
                     File dir = new File(root + "/" + year + "/" + month);
                     
-                            
                     File target = new File(targetDir, year + "/" + month + "/");
                     target.mkdirs();
                     
                     // iterating all files in the directory, and parsing them. Outputting their content exactly as it is to the result file,
                     // except for personal identifiers, which are anonymized using a salted hash.
                     for (File file : dir.listFiles()) {
+                        // skip files past the passed "since" date
+                        if (LocalDate.parse(file.getName().replace(".xml", ""), filenameParser).isBefore(since)) {
+                            continue;
+                        }
                         try (InputStream in = new FileInputStream(file)) {
                             try (Writer writer = new OutputStreamWriter(new FileOutputStream(new File(targetDir, year + "/" + month + "/" + file.getName())), "UTF-8")) {
                                 processFile(in, writer);
