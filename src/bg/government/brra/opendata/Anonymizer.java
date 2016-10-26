@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.security.MessageDigest;
@@ -76,7 +77,21 @@ public class Anonymizer {
         }
     }
     
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        try (InputStream in = new FileInputStream("C:\\Users\\bozho\\Downloads\\20160617\\20160617_before.xml")) {
+            try (Writer writer = new StringWriter()) {
+                processFile(in, writer);
+            } catch (Exception ex) {
+                // abort the whole process
+                throw new RuntimeException(ex);
+            }
+        } catch (Exception ex) {
+            // abort the whole process
+            throw new RuntimeException(ex);
+        }   
+    }
+    
+    public static void main1(String[] args) throws Exception {
         if (args.length < 2 || args.length > 4) {
             System.out.println("Program arguments: rootDir targetDir since(opt) maxYear(opt)");
             System.exit(0);
@@ -179,6 +194,7 @@ public class Anonymizer {
                 eventWriter.add(event); //write start address tag, but contents will not be written if they shouldn't
             } else if (event.getEventType() == XMLEvent.START_ELEMENT && ANONYMIZABLE_ADDRESS_PARENTS.contains(event.asStartElement().getName().getLocalPart())) {
                 anonymizableAddressParentStarted = true;
+                eventWriter.add(event);
             } else if (event.getEventType() == XMLEvent.START_ELEMENT && IGNORED_ELEMENT_CONTENTS.contains(event.asStartElement().getName().getLocalPart())) {
                 ignoredElementStarted = true;
             } else if (!identifierStarted && !passportStarted && !(anonymizableAddressParentStarted && addressStarted) && !ignoredElementStarted){
