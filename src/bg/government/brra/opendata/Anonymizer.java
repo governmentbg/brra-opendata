@@ -98,7 +98,11 @@ public class Anonymizer {
                     
                     // iterating all files in the directory, and parsing them. Outputting their content exactly as it is to the result file,
                     // except for personal identifiers, which are anonymized using a salted hash.
-                    for (File file : dir.listFiles()) {
+                    File[] files = dir.listFiles();
+                    if (files == null) {
+                        continue;
+                    }
+                    for (File file : files) {
                         // skip files past the passed "since" date
                         if (LocalDate.parse(file.getName().replace(".xml", ""), filenameParser).isBefore(since)) {
                             continue;
