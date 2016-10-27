@@ -76,22 +76,8 @@ public class Anonymizer {
             throw new IllegalStateException(e);
         }
     }
-    
-    public static void main(String[] args) {
-        try (InputStream in = new FileInputStream("C:\\Users\\bozho\\Downloads\\20160617\\20160617_before.xml")) {
-            try (Writer writer = new StringWriter()) {
-                processFile(in, writer);
-            } catch (Exception ex) {
-                // abort the whole process
-                throw new RuntimeException(ex);
-            }
-        } catch (Exception ex) {
-            // abort the whole process
-            throw new RuntimeException(ex);
-        }   
-    }
-    
-    public static void main1(String[] args) throws Exception {
+
+    public static void main(String[] args) throws Exception {
         if (args.length < 2 || args.length > 4) {
             System.out.println("Program arguments: rootDir targetDir since(opt) maxYear(opt)");
             System.exit(0);
