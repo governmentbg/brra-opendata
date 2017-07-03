@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.security.MessageDigest;
@@ -85,7 +84,7 @@ public class Anonymizer {
         String root = args[0];
         String targetDir = args[1];
         LocalDate since = args.length > 2 ? LocalDate.parse(args[2], argumentParser) : LocalDate.now().minusYears(20); 
-        int maxYear = args.length > 3 ? Integer.parseInt(args[3]) : 2017;
+        int maxYear = args.length > 3 ? Integer.parseInt(args[3]) : 2018;
         
         salts = deserializeSalts();
 
@@ -216,6 +215,10 @@ public class Anonymizer {
                 }
                 if (endTagName.equals(ADDRESS_ELEMENT)) {
                     addressStarted = false;
+                    // in case we had to anonymize the address, the end tag hasn't been written, so we write it here
+                    if (anonymizableAddressParentStarted) {
+                        eventWriter.add(event);
+                    }
                 }
                 if (ANONYMIZABLE_ADDRESS_PARENTS.contains(endTagName)) {
                     anonymizableAddressParentStarted = false;
@@ -224,14 +227,21 @@ public class Anonymizer {
                     ignoredElementStarted = false;
                 }
                 
-                // upon ending of Person or Subject, reset everything
+                // upon ending of Person or Subject (or ultimately - Deed), reset everything
                 if (endTagName.equals("Person") || endTagName.equals("Subject")
                         || endTagName.equals("NewOwner") || endTagName.equals("OldOwner") 
-                        || endTagName.equals("BranchSubject") || endTagName.equals("Petitioner")) {
+                        || endTagName.equals("BranchSubject") || endTagName.equals("Petitioner")
+                        || endTagName.equals("Deed")) {
                     identifierStarted = false;
                     indentTypeStarted = false;
                     identifierType = "";
                     identifierType = "";
+                }
+                
+                if (endTagName.equals("Deed")) {
+                    anonymizableAddressParentStarted = false;
+                    addressStarted = false;
+                    ignoredElementStarted = false;
                 }
             }
             
